@@ -31,9 +31,9 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);ove
 @keyframes bfrise{
   0%  {transform:translateY(105vh) translateX(0px)   rotate(0deg); opacity:0;}
   8%  {opacity:1;}
-  45% {transform:translateY(55vh)  translateX(40px)  rotate(6deg); opacity:0.18;}
+  45% {transform:translateY(55vh)  translateX(40px)  rotate(6deg); opacity:0.38;}
   55% {transform:translateY(45vh)  translateX(-30px) rotate(-4deg);}
-  92% {opacity:0.12;}
+  92% {opacity:0.28;}
   100%{transform:translateY(-10vh) translateX(20px)  rotate(8deg); opacity:0;}
 }
 .bf-inner{animation:bfwing ease-in-out infinite;}
@@ -997,10 +997,10 @@ function makeBF(size, left, delay, duration, colors){
   const [c1,c2] = colors;
   bf.innerHTML = `<div class="bf-inner" style="animation-duration:${0.6+Math.random()*0.4}s;">
     <svg width="${size}" height="${size*0.85}" viewBox="0 0 100 85" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50,42 C38,28 12,10 2,18 C-4,24 8,44 28,42 C36,41 44,41 50,42Z" fill="${c1}" opacity="0.8"/>
-      <path d="M50,42 C62,28 88,10 98,18 C104,24 92,44 72,42 C64,41 56,41 50,42Z" fill="${c2}" opacity="0.8"/>
-      <path d="M50,42 C40,50 18,58 12,72 C8,80 24,84 40,72 C46,67 49,53 50,42Z" fill="${c2}" opacity="0.7"/>
-      <path d="M50,42 C60,50 82,58 88,72 C92,80 76,84 60,72 C54,67 51,53 50,42Z" fill="${c1}" opacity="0.7"/>
+      <path d="M50,42 C38,28 12,10 2,18 C-4,24 8,44 28,42 C36,41 44,41 50,42Z" fill="${c1}" opacity="0.95"/>
+      <path d="M50,42 C62,28 88,10 98,18 C104,24 92,44 72,42 C64,41 56,41 50,42Z" fill="${c2}" opacity="0.95"/>
+      <path d="M50,42 C40,50 18,58 12,72 C8,80 24,84 40,72 C46,67 49,53 50,42Z" fill="${c2}" opacity="0.88"/>
+      <path d="M50,42 C60,50 82,58 88,72 C92,80 76,84 60,72 C54,67 51,53 50,42Z" fill="${c1}" opacity="0.88"/>
       <ellipse cx="50" cy="43" rx="3" ry="14" fill="#D4A85A" opacity="0.7"/>
       <circle cx="50" cy="30" r="3.5" fill="#D4A85A" opacity="0.7"/>
       <path d="M50,30 C44,22 40,16 38,12" stroke="#D4A85A" stroke-width="1" fill="none" opacity="0.7" stroke-linecap="round"/>
