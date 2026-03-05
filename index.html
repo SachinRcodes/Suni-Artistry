@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Suni's Artistry – Handcrafted with Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --pink:#F7C5CC; --blue:#B8D8E8; --green:#C8E6C0;
+  --cream:#FDF8F3; --warm:#F5EFE6; --lavender:#E8D5F0;
+  --gold:#D4A85A; --gold-light:#F0CC7A;
+  --accent:#C97B6A; --accent2:#7BA8C4; --accent3:#6FAE6F;
+  --text:#3E2C24; --subtle:#8B7060; --muted:#BBA89A;
+  --white:#FFFFFF; --shadow:rgba(62,44,36,0.10);
+  --border:rgba(247,197,204,0.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ══ BUTTERFLY BACKGROUND ══ */
+#butterfly-canvas{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.bf{
+  position:absolute;pointer-events:none;
+  animation:bfrise linear infinite;
+  transform-origin:center;
+}
+@keyframes bfrise{
+  0%  {transform:translateY(105vh) translateX(0px)   rotate(0deg); opacity:0;}
+  8%  {opacity:1;}
+  45% {transform:translateY(55vh)  translateX(40px)  rotate(6deg); opacity:0.18;}
+  55% {transform:translateY(45vh)  translateX(-30px) rotate(-4deg);}
+  92% {opacity:0.12;}
+  100%{transform:translateY(-10vh) translateX(20px)  rotate(8deg); opacity:0;}
+}
+.bf-inner{animation:bfwing ease-in-out infinite;}
+@keyframes bfwing{
+  0%,100%{transform:scaleY(1) scaleX(1);}
+  50%{transform:scaleY(0.5) scaleX(0.95);}
+}
+
+/* ══ PAGES ══ */
+.page{display:none;min-height:100vh;position:relative;z-index:1;animation:fadeIn .4s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══ NAV ══ */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(253,248,243,0.96);backdrop-filter:blur(16px);
+  border-bottom:1.5px solid var(--pink);
+  padding:0 48px;
+  display:flex;align-items:center;justify-content:space-between;height:70px;
+}
+.nav-brand{
+  font-family:'Dancing Script',cursive;font-size:1.9rem;color:var(--accent);
+  text-decoration:none;letter-spacing:1px;
+  display:flex;align-items:center;gap:10px;
+}
+.nav-logo-bf{display:flex;align-items:center;}
+.nav-logo-bf svg{filter:drop-shadow(0 2px 6px rgba(201,123,106,0.3));transition:transform .4s;}
+.nav-brand:hover .nav-logo-bf svg{transform:rotate(8deg) scale(1.1);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links li a{
+  display:block;padding:8px 18px;
+  font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--subtle);text-decoration:none;transition:color .2s;border-radius:50px;
+}
+.nav-links li a:hover,.nav-links li a.active{color:var(--accent);background:rgba(201,123,106,0.08);}
+.nav-cta{
+  background:var(--accent);color:#fff;border:none;
+  padding:9px 22px;border-radius:50px;cursor:pointer;
+  font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;font-family:'Lato',sans-serif;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 3px 14px rgba(201,123,106,0.35);
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,123,106,0.45);}
+
+/* ══ HERO ══ */
+.hero{
+  min-height:calc(100vh - 70px);
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  padding:80px 80px 60px;gap:60px;
+  background:linear-gradient(135deg,var(--warm) 0%,rgba(247,197,204,0.45) 38%,rgba(184,216,232,0.35) 72%,rgba(200,230,192,0.3) 100%);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 65% 45%,rgba(255,255,255,0.55) 0%,transparent 60%);
+}
+.hero-text{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.75);border:1px solid var(--border);
+  border-radius:50px;padding:7px 18px;margin-bottom:28px;
+  font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--subtle);
+}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent3);display:inline-block;}
+.hero-title{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(3.2rem,5.5vw,5.8rem);line-height:1.05;
+  color:var(--text);margin-bottom:8px;
+}
+.hero-title em{color:var(--accent);font-style:normal;}
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-style:italic;
+  color:var(--subtle);line-height:1.8;margin-bottom:40px;max-width:400px;
+}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{display:inline-block;text-decoration:none;border:none;cursor:pointer;transition:all .25s;font-family:'Lato',sans-serif;}
+.btn-primary{
+  background:var(--accent);color:#fff;
+  padding:14px 36px;border-radius:50px;
+  font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;
+  box-shadow:0 5px 22px rgba(201,123,106,0.38);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(201,123,106,0.48);}
+.btn-outline{
+  border:1.5px solid var(--accent);color:var(--accent);background:transparent;
+  padding:13px 32px;border-radius:50px;
+  font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;
+}
+.btn-outline:hover{background:var(--accent);color:#fff;}
+
+/* Hero butterfly centerpiece */
+.hero-art{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-bf-glow{
+  position:absolute;width:380px;height:380px;border-radius:50%;
+  background:radial-gradient(circle,rgba(247,197,204,0.4) 0%,rgba(184,216,232,0.25) 45%,transparent 70%);
+  animation:glowpulse 4s ease-in-out infinite;
+}
+@keyframes glowpulse{0%,100%{transform:scale(1);opacity:0.8;}50%{transform:scale(1.12);opacity:1;}}
+.hero-bf-svg{
+  position:relative;z-index:2;
+  filter:drop-shadow(0 16px 50px rgba(201,123,106,0.28)) drop-shadow(0 4px 18px rgba(184,216,232,0.35));
+  animation:bfhover 5s ease-in-out infinite;
+}
+@keyframes bfhover{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-20px) rotate(2deg);}}
+/* sparkle dots around hero bf */
+.sp{position:absolute;border-radius:50%;animation:sparkle ease-in-out infinite;}
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(0);}50%{opacity:1;transform:scale(1);}}
+
+/* ══ MARQUEE ══ */
+.marquee-wrap{
+  background:linear-gradient(90deg,var(--pink),var(--blue),var(--green),var(--lavender),var(--pink));
+  padding:13px 0;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.6);
+  position:relative;z-index:1;
+}
+.marquee-track{display:flex;width:max-content;animation:scroll 24s linear infinite;}
+.marquee-track span{
+  font-family:'Cormorant Garamond',serif;font-size:1rem;
+  color:rgba(62,44,36,0.75);white-space:nowrap;padding:0 28px;letter-spacing:1px;
+}
+.marquee-track span::before{content:'🦋  ';}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ══ SECTION ══ */
+.section{padding:90px 72px;position:relative;z-index:1;}
+.section-header{margin-bottom:56px;}
+.section-eyebrow{font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.9rem);color:var(--text);margin-bottom:10px;}
+.section-sub{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--subtle);}
+
+/* ══ FEATURED CARDS ══ */
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.feat-card{
+  background:var(--cream);border-radius:22px;overflow:hidden;
+  border:1px solid var(--border);cursor:pointer;
+  box-shadow:0 2px 16px var(--shadow);transition:transform .28s,box-shadow .28s;
+}
+.feat-card:hover{transform:translateY(-7px);box-shadow:0 16px 48px rgba(62,44,36,0.14);}
+.feat-card-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.feat-card-body{padding:18px 20px 22px;}
+.feat-card-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--text);margin-bottom:6px;}
+.feat-card-desc{font-size:0.82rem;color:var(--subtle);line-height:1.6;margin-bottom:12px;}
+.feat-card-link{font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:700;}
+
+/* ══ TRUST STRIP ══ */
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.trust-card{
+  padding:32px 24px;background:rgba(255,255,255,0.75);border-radius:24px;
+  border:1px solid var(--border);text-align:center;
+}
+.trust-icon{font-size:2.5rem;margin-bottom:14px;}
+.trust-title{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:8px;}
+.trust-desc{font-size:0.88rem;color:var(--subtle);line-height:1.7;}
+
+/* ══ SHOP PAGE ══ */
+.shop-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+.filter-btn{
+  padding:8px 20px;border-radius:50px;border:1.5px solid var(--border);
+  background:transparent;font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--subtle);cursor:pointer;transition:all .2s;font-family:'Lato',sans-serif;
+}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px;}
+.shop-card{
+  background:var(--white);border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);cursor:pointer;
+  box-shadow:0 2px 12px var(--shadow);transition:transform .25s,box-shadow .25s;
+}
+.shop-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(62,44,36,0.13);}
+.shop-card-img{height:150px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;}
+.shop-card-body{padding:14px 16px 18px;}
+.shop-card-name{font-family:'Playfair Display',serif;font-size:0.98rem;color:var(--text);margin-bottom:5px;}
+.shop-card-count{font-size:0.75rem;color:var(--muted);letter-spacing:1px;margin-bottom:10px;}
+.shop-card-cta{font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:700;}
+
+/* ══ SUBCATEGORY PAGE ══ */
+.sub-breadcrumb{display:flex;align-items:center;gap:10px;margin-bottom:48px;font-size:0.82rem;color:var(--muted);}
+.sub-breadcrumb a{color:var(--accent);text-decoration:none;}
+.sub-breadcrumb span{color:var(--muted);}
+.sub-header{display:flex;align-items:flex-start;gap:24px;margin-bottom:52px;}
+.sub-icon{font-size:3.5rem;background:var(--warm);width:88px;height:88px;border-radius:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border);}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;}
+.sub-card{
+  background:var(--white);border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);box-shadow:0 2px 14px var(--shadow);
+  transition:transform .25s,box-shadow .25s;
+}
+.sub-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(62,44,36,0.13);}
+.sub-card-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.sub-card-body{padding:18px 20px;}
+.sub-card-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--text);margin-bottom:8px;}
+.sub-card-desc{font-size:0.82rem;color:var(--subtle);line-height:1.6;margin-bottom:14px;}
+.sub-card-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--accent);font-style:italic;margin-bottom:14px;}
+.sub-card-actions{display:flex;gap:10px;}
+.btn-order{
+  flex:1;background:var(--accent);color:#fff;border:none;
+  padding:10px;border-radius:12px;font-size:0.75rem;letter-spacing:1.5px;
+  text-transform:uppercase;cursor:pointer;font-family:'Lato',sans-serif;transition:all .2s;
+}
+.btn-order:hover{background:#b56b5a;}
+.btn-wa{
+  background:rgba(200,230,192,0.6);color:#3a7a3a;border:none;
+  padding:10px 14px;border-radius:12px;font-size:1.1rem;cursor:pointer;transition:all .2s;
+}
+.btn-wa:hover{background:#c8e6c0;}
+
+/* ══ GALLERY ══ */
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.gallery-item{
+  border-radius:18px;overflow:hidden;cursor:pointer;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s,box-shadow .25s;
+}
+.gallery-item:hover{transform:scale(1.02);box-shadow:0 14px 44px var(--shadow);}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+.gallery-item.tall{grid-row:span 2;}
+.gallery-item.wide{grid-column:span 2;}
+.gallery-item-inner{
+  width:100%;min-height:180px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;padding:24px;
+}
+.gallery-overlay{
+  position:absolute;inset:0;
+  background:rgba(201,123,106,0.85);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;border-radius:18px;
+}
+.gallery-overlay p{color:#fff;font-family:'Playfair Display',serif;font-size:1rem;text-align:center;}
+.gallery-overlay span{color:rgba(255,255,255,0.8);font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;}
+.gallery-label{font-family:'Playfair Display',serif;font-size:0.9rem;color:var(--subtle);}
+
+/* ══ CONTACT ══ */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:16px;}
+.contact-info p{color:var(--subtle);line-height:1.8;margin-bottom:28px;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.contact-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.contact-icon.pk{background:rgba(247,197,204,0.5);}
+.contact-icon.gn{background:rgba(200,230,192,0.6);}
+.contact-icon.bl{background:rgba(184,216,232,0.5);}
+.contact-label{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;
+  padding:14px 28px;border-radius:50px;border:none;cursor:pointer;
+  font-size:0.82rem;letter-spacing:1.5px;text-transform:uppercase;font-family:'Lato',sans-serif;
+  box-shadow:0 4px 18px rgba(37,211,102,0.35);
+  transition:all .2s;margin-top:24px;text-decoration:none;
+}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,0.45);}
+.order-form{
+  background:var(--white);border-radius:28px;
+  padding:40px;border:1.5px solid var(--border);
+  box-shadow:0 4px 28px var(--shadow);
+}
+.order-form h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:6px;}
+.order-form p{color:var(--subtle);font-size:0.88rem;margin-bottom:28px;}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--subtle);margin-bottom:8px;}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:12px 16px;border-radius:12px;
+  border:1.5px solid var(--border);background:var(--cream);
+  font-family:'Lato',sans-serif;font-size:0.9rem;color:var(--text);
+  outline:none;transition:border-color .2s;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:110px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-note{
+  background:rgba(247,197,204,0.3);border:1px solid var(--pink);
+  border-radius:12px;padding:12px 16px;
+  font-size:0.8rem;color:var(--subtle);margin-bottom:20px;
+  display:flex;align-items:center;gap:8px;
+}
+.submit-btn{
+  width:100%;padding:14px;border-radius:14px;border:none;
+  background:var(--accent);color:#fff;cursor:pointer;
+  font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;font-family:'Lato',sans-serif;
+  box-shadow:0 4px 18px rgba(201,123,106,0.35);transition:all .2s;
+}
+.submit-btn:hover{background:#b56b5a;transform:translateY(-1px);}
+
+/* ══ MODAL ══ */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(62,44,36,0.4);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;
+}
+.modal-overlay.open{display:flex;}
+.modal{
+  background:var(--white);border-radius:28px;
+  width:90%;max-width:560px;max-height:90vh;overflow-y:auto;
+  padding:44px;position:relative;
+  box-shadow:0 32px 90px rgba(62,44,36,0.22);
+  animation:slideUp .3s ease;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.modal-close{
+  position:absolute;top:18px;right:20px;
+  background:var(--warm);border:none;border-radius:50%;
+  width:34px;height:34px;font-size:1.1rem;cursor:pointer;color:var(--subtle);
+  display:flex;align-items:center;justify-content:center;transition:background .2s;
+}
+.modal-close:hover{background:var(--pink);}
+.modal h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:6px;}
+.modal-item{
+  background:var(--warm);border-radius:14px;padding:14px 18px;
+  margin-bottom:24px;display:flex;align-items:center;gap:12px;font-size:0.9rem;
+}
+.modal-wa-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:13px;border-radius:14px;border:none;
+  background:#25D366;color:#fff;cursor:pointer;
+  font-size:0.82rem;letter-spacing:1.5px;text-transform:uppercase;font-family:'Lato',sans-serif;
+  margin-bottom:14px;transition:all .2s;
+}
+.modal-wa-btn:hover{background:#1ebe5d;}
+.modal-divider{text-align:center;color:var(--muted);font-size:0.8rem;letter-spacing:1px;margin:10px 0;position:relative;}
+.modal-divider::before,.modal-divider::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:var(--border);}
+.modal-divider::before{left:0;}.modal-divider::after{right:0;}
+
+/* ══ FOOTER ══ */
+footer{
+  background:var(--text);color:rgba(255,255,255,0.7);
+  padding:52px 72px 32px;position:relative;z-index:1;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.footer-brand-name{font-family:'Dancing Script',cursive;font-size:2.2rem;color:var(--pink);}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.7;}
+.footer-heading{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.88rem;transition:color .2s;}
+.footer-links a:hover{color:var(--pink);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.35);}
+.footer-note{font-size:0.75rem;color:rgba(255,255,255,0.3);font-family:'Cormorant Garamond',serif;font-style:italic;}
+
+/* ══ TOAST ══ */
+.toast{
+  position:fixed;bottom:30px;right:30px;z-index:999;
+  background:var(--text);color:#fff;
+  padding:16px 24px;border-radius:16px;
+  font-size:0.88rem;box-shadow:0 8px 32px rgba(0,0,0,0.2);
+  transform:translateY(80px);opacity:0;transition:all .35s ease;
+  display:flex;align-items:center;gap:10px;
+}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:60px 32px;text-align:center;}
+  .hero-art{display:none;}
+  .feat-grid{grid-template-columns:repeat(2,1fr);}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-wrap{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  nav{padding:0 24px;}
+  .section{padding:60px 32px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Fixed butterfly background -->
+<div id="butterfly-canvas"></div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a class="nav-brand" href="#" onclick="showPage('home')">
+    <span class="nav-logo-bf">
+      <!-- Butterfly SVG logo -->
+      <svg width="36" height="30" viewBox="0 0 140 110" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="nw1" cx="35%" cy="35%"><stop offset="0%" stop-color="#F9C6D0"/><stop offset="55%" stop-color="#C97B6A" stop-opacity="0.85"/><stop offset="100%" stop-color="#8B3A3A" stop-opacity="0.65"/></radialGradient>
+          <radialGradient id="nw2" cx="65%" cy="35%"><stop offset="0%" stop-color="#C5E0F5"/><stop offset="55%" stop-color="#7BA8C4" stop-opacity="0.85"/><stop offset="100%" stop-color="#3A6A8B" stop-opacity="0.65"/></radialGradient>
+          <radialGradient id="nw3" cx="35%" cy="65%"><stop offset="0%" stop-color="#D5EDD0"/><stop offset="100%" stop-color="#6FAE6F" stop-opacity="0.75"/></radialGradient>
+          <radialGradient id="nw4" cx="65%" cy="65%"><stop offset="0%" stop-color="#EAD8F5"/><stop offset="100%" stop-color="#9B6FC4" stop-opacity="0.75"/></radialGradient>
+          <linearGradient id="ngold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F0CC7A"/><stop offset="100%" stop-color="#B8860B"/></linearGradient>
+        </defs>
+        <path d="M70,55 C56,38 18,12 2,24 C-8,32 10,62 40,60 C52,59 63,56 70,55Z" fill="url(#nw1)" stroke="url(#ngold)" stroke-width="1.3"/>
+        <path d="M70,55 C84,38 122,12 138,24 C148,32 130,62 100,60 C88,59 77,56 70,55Z" fill="url(#nw2)" stroke="url(#ngold)" stroke-width="1.3"/>
+        <path d="M70,55 C55,65 24,74 16,90 C10,102 34,108 56,92 C63,87 68,69 70,55Z" fill="url(#nw3)" stroke="url(#ngold)" stroke-width="1.3"/>
+        <path d="M70,55 C85,65 116,74 124,90 C130,102 106,108 84,92 C77,87 72,69 70,55Z" fill="url(#nw4)" stroke="url(#ngold)" stroke-width="1.3"/>
+        <ellipse cx="70" cy="57" rx="4.5" ry="20" fill="#C97B6A" stroke="url(#ngold)" stroke-width="1.2"/>
+        <circle cx="70" cy="36" r="5" fill="url(#ngold)"/>
+        <path d="M70,36 C60,23 52,16 49,11" stroke="url(#ngold)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <path d="M70,36 C80,23 88,16 91,11" stroke="url(#ngold)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <circle cx="49" cy="10" r="2.5" fill="#C97B6A"/>
+        <circle cx="91" cy="10" r="2.5" fill="#C97B6A"/>
+        <circle cx="32" cy="40" r="3.5" fill="rgba(255,255,255,0.55)"/>
+        <circle cx="108" cy="40" r="3.5" fill="rgba(255,255,255,0.55)"/>
+        <circle cx="36" cy="78" r="3" fill="rgba(255,255,255,0.45)"/>
+        <circle cx="104" cy="78" r="3" fill="rgba(255,255,255,0.45)"/>
+        <circle cx="20" cy="52" r="2" fill="rgba(212,168,90,0.6)"/>
+        <circle cx="120" cy="52" r="2" fill="rgba(212,168,90,0.6)"/>
+      </svg>
+    </span>
+    Suni's Artistry
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('shop')" data-page="shop">Shop</a></li>
+    <li><a href="#" onclick="showPage('gallery')" data-page="gallery">Gallery</a></li>
+    <li><a href="#" onclick="showPage('contact')" data-page="contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showPage('contact')">Order Now</button>
+</nav>
+
+<!-- ══════════ HOME ══════════ -->
+<div id="home" class="page active">
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="hero-badge-dot"></span> Handcrafted with Love</div>
+      <h1 class="hero-title">Suni's<br/><em>Artistry</em></h1>
+      <p class="hero-tagline">Each piece tells a story — crafted by hand, made for your heart.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary" onclick="showPage('shop')">Explore Shop</a>
+        <a href="#" class="btn btn-outline" onclick="showPage('gallery')">View Gallery</a>
+      </div>
+    </div>
+
+    <!-- HERO BUTTERFLY -->
+    <div class="hero-art">
+      <div class="hero-bf-glow"></div>
+      <!-- Sparkles -->
+      <div class="sp" style="width:10px;height:10px;background:#F7C5CC;top:10%;left:20%;animation-duration:2.2s;animation-delay:0s;"></div>
+      <div class="sp" style="width:7px;height:7px;background:#D4A85A;top:15%;right:18%;animation-duration:1.8s;animation-delay:.4s;"></div>
+      <div class="sp" style="width:9px;height:9px;background:#B8D8E8;bottom:18%;left:16%;animation-duration:2.5s;animation-delay:.8s;"></div>
+      <div class="sp" style="width:6px;height:6px;background:#C8E6C0;bottom:12%;right:22%;animation-duration:2s;animation-delay:1.2s;"></div>
+      <div class="sp" style="width:8px;height:8px;background:#E8D5F0;top:45%;left:8%;animation-duration:2.8s;animation-delay:.2s;"></div>
+      <svg class="hero-bf-svg" width="340" height="290" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hw1" cx="35%" cy="35%"><stop offset="0%" stop-color="#FADADD"/><stop offset="40%" stop-color="#E8A0AA"/><stop offset="75%" stop-color="#C97B6A" stop-opacity="0.9"/><stop offset="100%" stop-color="#7A2828" stop-opacity="0.7"/></radialGradient>
+          <radialGradient id="hw2" cx="65%" cy="35%"><stop offset="0%" stop-color="#D0EDFB"/><stop offset="40%" stop-color="#90C4E0"/><stop offset="75%" stop-color="#5A8FAE" stop-opacity="0.9"/><stop offset="100%" stop-color="#2A5A7A" stop-opacity="0.7"/></radialGradient>
+          <radialGradient id="hw3" cx="35%" cy="65%"><stop offset="0%" stop-color="#D8F0D0"/><stop offset="50%" stop-color="#8ACA86"/><stop offset="100%" stop-color="#4A8A4A" stop-opacity="0.8"/></radialGradient>
+          <radialGradient id="hw4" cx="65%" cy="65%"><stop offset="0%" stop-color="#EEE0FF"/><stop offset="50%" stop-color="#C0A0E0"/><stop offset="100%" stop-color="#8050AA" stop-opacity="0.8"/></radialGradient>
+          <linearGradient id="hgold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F5D280"/><stop offset="50%" stop-color="#D4A85A"/><stop offset="100%" stop-color="#A07820"/></linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="1.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Upper left wing -->
+        <path d="M100,80 C85,58 48,28 18,36 C2,40 8,72 38,76 C58,79 82,80 100,80Z" fill="url(#hw1)" stroke="url(#hgold)" stroke-width="1.5" filter="url(#glow)"/>
+        <!-- Upper right wing -->
+        <path d="M100,80 C115,58 152,28 182,36 C198,40 192,72 162,76 C142,79 118,80 100,80Z" fill="url(#hw2)" stroke="url(#hgold)" stroke-width="1.5" filter="url(#glow)"/>
+        <!-- Lower left wing -->
+        <path d="M100,80 C82,93 44,106 30,126 C22,138 48,148 72,130 C84,120 96,98 100,80Z" fill="url(#hw3)" stroke="url(#hgold)" stroke-width="1.5" filter="url(#glow)"/>
+        <!-- Lower right wing -->
+        <path d="M100,80 C118,93 156,106 170,126 C178,138 152,148 128,130 C116,120 104,98 100,80Z" fill="url(#hw4)" stroke="url(#hgold)" stroke-width="1.5" filter="url(#glow)"/>
+        <!-- Wing veins -->
+        <path d="M100,80 C85,68 62,50 38,42" stroke="url(#hgold)" stroke-width="0.8" fill="none" opacity="0.7"/>
+        <path d="M100,80 C90,72 74,58 52,48" stroke="url(#hgold)" stroke-width="0.7" fill="none" opacity="0.5"/>
+        <path d="M100,80 C115,68 138,50 162,42" stroke="url(#hgold)" stroke-width="0.8" fill="none" opacity="0.7"/>
+        <path d="M100,80 C110,72 126,58 148,48" stroke="url(#hgold)" stroke-width="0.7" fill="none" opacity="0.5"/>
+        <path d="M100,80 C88,100 68,118 50,128" stroke="url(#hgold)" stroke-width="0.7" fill="none" opacity="0.5"/>
+        <path d="M100,80 C112,100 132,118 150,128" stroke="url(#hgold)" stroke-width="0.7" fill="none" opacity="0.5"/>
+        <!-- Body -->
+        <ellipse cx="100" cy="82" rx="5" ry="26" fill="#C97B6A" stroke="url(#hgold)" stroke-width="1.5"/>
+        <!-- Head -->
+        <circle cx="100" cy="54" r="6.5" fill="url(#hgold)" filter="url(#glow)"/>
+        <circle cx="100" cy="54" r="3.5" fill="#C97B6A"/>
+        <!-- Antennae -->
+        <path d="M100,54 C88,38 80,28 76,20" stroke="url(#hgold)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M100,54 C112,38 120,28 124,20" stroke="url(#hgold)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <circle cx="76" cy="19" r="3.5" fill="url(#hgold)"/>
+        <circle cx="124" cy="19" r="3.5" fill="url(#hgold)"/>
+        <!-- Iridescent shimmer gems on wings -->
+        <circle cx="42" cy="56" r="5" fill="rgba(255,255,255,0.6)" stroke="url(#hgold)" stroke-width="0.8"/>
+        <circle cx="158" cy="56" r="5" fill="rgba(255,255,255,0.6)" stroke="url(#hgold)" stroke-width="0.8"/>
+        <circle cx="28" cy="70" r="3.5" fill="rgba(184,216,232,0.7)"/>
+        <circle cx="172" cy="70" r="3.5" fill="rgba(184,216,232,0.7)"/>
+        <circle cx="52" cy="118" r="4" fill="rgba(255,255,255,0.55)" stroke="url(#hgold)" stroke-width="0.8"/>
+        <circle cx="148" cy="118" r="4" fill="rgba(255,255,255,0.55)" stroke="url(#hgold)" stroke-width="0.8"/>
+        <circle cx="68" cy="68" r="3" fill="rgba(232,213,240,0.7)"/>
+        <circle cx="132" cy="68" r="3" fill="rgba(232,213,240,0.7)"/>
+        <!-- Tail drops -->
+        <ellipse cx="90" cy="150" rx="3" ry="6" fill="#C97B6A" stroke="url(#hgold)" stroke-width="1"/>
+        <ellipse cx="110" cy="150" rx="3" ry="6" fill="#C97B6A" stroke="url(#hgold)" stroke-width="1"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Earrings</span><span>Paintings</span><span>Lippan Art</span><span>Bangles</span><span>Coasters</span><span>Key Chains</span><span>Neck Chains</span><span>Fridge Magnets</span><span>Scented Candles</span><span>Hair Clips</span><span>Table Runners</span><span>Cushion Covers</span><span>Bracelets</span><span>Cloth Bags</span>
+      <span>Earrings</span><span>Paintings</span><span>Lippan Art</span><span>Bangles</span><span>Coasters</span><span>Key Chains</span><span>Neck Chains</span><span>Fridge Magnets</span><span>Scented Candles</span><span>Hair Clips</span><span>Table Runners</span><span>Cushion Covers</span><span>Bracelets</span><span>Cloth Bags</span>
+    </div>
+  </div>
+
+  <!-- Featured -->
+  <section class="section" style="background:var(--white);">
+    <div class="section-header">
+      <p class="section-eyebrow">Handpicked for you</p>
+      <h2 class="section-title">Featured Collections</h2>
+      <p class="section-sub">A little bit of everything, made with all of the heart.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card" onclick="openSubcategory('earrings')">
+        <div class="feat-card-img" style="background:linear-gradient(135deg,rgba(247,197,204,0.4),rgba(232,213,240,0.4));">🌸</div>
+        <div class="feat-card-body">
+          <div class="feat-card-name">Earrings</div>
+          <div class="feat-card-desc">Terracotta, beads, jhumkas, silk thread & more.</div>
+          <div class="feat-card-link">Explore →</div>
+        </div>
+      </div>
+      <div class="feat-card" onclick="openSubcategory('paintings')">
+        <div class="feat-card-img" style="background:linear-gradient(135deg,rgba(184,216,232,0.4),rgba(200,230,192,0.4));">🎨</div>
+        <div class="feat-card-body">
+          <div class="feat-card-name">Paintings</div>
+          <div class="feat-card-desc">Mandalas, fluid art, floral & abstract pieces.</div>
+          <div class="feat-card-link">Explore →</div>
+        </div>
+      </div>
+      <div class="feat-card" onclick="openSubcategory('lippan')">
+        <div class="feat-card-img" style="background:linear-gradient(135deg,rgba(200,230,192,0.4),rgba(247,197,204,0.4));">🏺</div>
+        <div class="feat-card-body">
+          <div class="feat-card-name">Lippan Art</div>
+          <div class="feat-card-desc">Traditional mud mirror work wall hangings.</div>
+          <div class="feat-card-link">Explore →</div>
+        </div>
+      </div>
+      <div class="feat-card" onclick="openSubcategory('candles')">
+        <div class="feat-card-img" style="background:linear-gradient(135deg,rgba(232,213,240,0.4),rgba(184,216,232,0.4));">🕯️</div>
+        <div class="feat-card-body">
+          <div class="feat-card-name">Scented Candles</div>
+          <div class="feat-card-desc">Soy wax, beeswax & aromatic blends.</div>
+          <div class="feat-card-link">Explore →</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px;">
+      <a href="#" class="btn btn-outline" onclick="showPage('shop')">View All Products</a>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(247,197,204,0.18),rgba(184,216,232,0.18));">
+    <div class="trust-strip">
+      <div class="trust-card">
+        <div class="trust-icon">🤍</div>
+        <h4 class="trust-title">Made with Love</h4>
+        <p class="trust-desc">Every item is carefully handcrafted. No two pieces are exactly alike.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🚚</div>
+        <h4 class="trust-title">Ships Across India</h4>
+        <p class="trust-desc">Safe, secure packaging. Online payment only — no cash on delivery.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🎁</div>
+        <h4 class="trust-title">Custom Orders</h4>
+        <p class="trust-desc">Want something personalised? Reach out and let's create it together!</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ SHOP ══════════ -->
+<div id="shop" class="page">
+  <section class="section">
+    <div class="section-header">
+      <p class="section-eyebrow">All Collections</p>
+      <h2 class="section-title">The Full Shop</h2>
+      <p class="section-sub">Click any category to explore its handcrafted varieties.</p>
+    </div>
+    <div class="shop-filters">
+      <button class="filter-btn active" onclick="filterShop('all',this)">All</button>
+      <button class="filter-btn" onclick="filterShop('jewellery',this)">Jewellery</button>
+      <button class="filter-btn" onclick="filterShop('art',this)">Art & Décor</button>
+      <button class="filter-btn" onclick="filterShop('home',this)">Home</button>
+      <button class="filter-btn" onclick="filterShop('accessories',this)">Accessories</button>
+    </div>
+    <div class="shop-grid" id="shopGrid"></div>
+  </section>
+</div>
+
+<!-- ══════════ SUBCATEGORY ══════════ -->
+<div id="subcategory" class="page">
+  <section class="section">
+    <div class="sub-breadcrumb">
+      <a href="#" onclick="showPage('shop')">Shop</a>
+      <span>/</span>
+      <span id="subBreadcrumb">Category</span>
+    </div>
+    <div class="sub-header">
+      <div class="sub-icon" id="subIcon">🌸</div>
+      <div>
+        <p class="section-eyebrow" id="subEyebrow">Category</p>
+        <h2 class="section-title" id="subTitle">Name</h2>
+        <p class="section-sub" id="subDesc">Description</p>
+      </div>
+    </div>
+    <div class="sub-grid" id="subGrid"></div>
+  </section>
+</div>
+
+<!-- ══════════ GALLERY ══════════ -->
+<div id="gallery" class="page">
+  <section class="section" style="background:var(--white);">
+    <div class="section-header">
+      <p class="section-eyebrow">Crafted with care</p>
+      <h2 class="section-title">The Gallery</h2>
+      <p class="section-sub">A glimpse of the love that goes into every creation.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall" style="background:linear-gradient(135deg,rgba(247,197,204,0.5),rgba(232,213,240,0.4));"><div class="gallery-item-inner"><span style="font-size:3.5rem;">🌸</span><p class="gallery-label">Earrings Collection</p></div><div class="gallery-overlay"><p>Earrings</p><span>View Collection →</span></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,rgba(184,216,232,0.5),rgba(200,230,192,0.4));"><div class="gallery-item-inner"><span style="font-size:3rem;">🎨</span><p class="gallery-label">Paintings</p></div><div class="gallery-overlay"><p>Paintings</p><span>View Collection →</span></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,rgba(200,230,192,0.5),rgba(247,197,204,0.3));"><div class="gallery-item-inner"><span style="font-size:3rem;">💎</span><p class="gallery-label">Jewellery</p></div><div class="gallery-overlay"><p>Jewellery</p><span>View Collection →</span></div></div>
+      <div class="gallery-item wide" style="background:linear-gradient(135deg,rgba(232,213,240,0.45),rgba(184,216,232,0.35));"><div class="gallery-item-inner"><span style="font-size:3.5rem;">🏺</span><p class="gallery-label">Lippan Art — Traditional Kutchi mud mirror work</p></div><div class="gallery-overlay"><p>Lippan Art</p><span>Traditional mud mirror work</span></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,rgba(247,197,204,0.4),rgba(200,230,192,0.3));"><div class="gallery-item-inner"><span style="font-size:3rem;">🕯️</span><p class="gallery-label">Scented Candles</p></div><div class="gallery-overlay"><p>Scented Candles</p><span>View Collection →</span></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,rgba(184,216,232,0.5),rgba(247,197,204,0.3));"><div class="gallery-item-inner"><span style="font-size:3rem;">👜</span><p class="gallery-label">Bags & Pouches</p></div><div class="gallery-overlay"><p>Bags & Pouches</p><span>View Collection →</span></div></div>
+      <div class="gallery-item tall" style="background:linear-gradient(135deg,rgba(200,230,192,0.5),rgba(232,213,240,0.35));"><div class="gallery-item-inner"><span style="font-size:3.5rem;">🛋️</span><p class="gallery-label">Home Décor</p></div><div class="gallery-overlay"><p>Home Décor</p><span>Coasters, Runners & More</span></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,rgba(247,197,204,0.4),rgba(184,216,232,0.3));"><div class="gallery-item-inner"><span style="font-size:3rem;">🗝️</span><p class="gallery-label">Keychains & Charms</p></div><div class="gallery-overlay"><p>Keychains & Charms</p><span>View Collection →</span></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,rgba(232,213,240,0.5),rgba(200,230,192,0.3));"><div class="gallery-item-inner"><span style="font-size:3rem;">🎀</span><p class="gallery-label">Hair Accessories</p></div><div class="gallery-overlay"><p>Hair Accessories</p><span>View Collection →</span></div></div>
+    </div>
+    <div style="margin-top:48px;background:linear-gradient(135deg,rgba(247,197,204,0.2),rgba(184,216,232,0.2));border-radius:24px;padding:40px;text-align:center;border:1px solid var(--border);">
+      <div style="font-size:2.5rem;margin-bottom:12px;">🦋</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--subtle);margin-bottom:8px;">Photos of actual products coming soon — samples are being crafted with love!</p>
+      <p style="font-size:0.82rem;color:var(--muted);">Reach out to see what's available right now.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ CONTACT ══════════ -->
+<div id="contact" class="page">
+  <section class="section">
+    <div class="section-header">
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-title">Place an Order</h2>
+      <p class="section-sub">Choose how you'd like to connect — WhatsApp or the order form below.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h3>Let's create something beautiful 🦋</h3>
+        <p>Every order is made with care and attention to detail. Reach out to discuss customisations, bulk orders, or just to say hello!</p>
+        <div class="contact-detail">
+          <div class="contact-icon gn">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <strong>+91 XXXXX XXXXX</strong>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon pk">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <strong>sunisartistry@gmail.com</strong>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon bl">📦</div>
+          <div>
+            <div class="contact-label">Payment</div>
+            <strong>Online only · No Cash on Delivery</strong>
+          </div>
+        </div>
+        <a href="https://wa.me/91XXXXXXXXXX" class="wa-btn" target="_blank">💬 Chat on WhatsApp</a>
+      </div>
+      <div class="order-form">
+        <h3>Order Form</h3>
+        <p>Fill in the details and we'll get back to you within 24 hours!</p>
+        <div class="form-note">💳 We accept UPI, bank transfer & cards. No COD.</div>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="e.g. Priya Sharma"/></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"/></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
+        <div class="form-group">
+          <label>Product Category</label>
+          <select>
+            <option value="">Select a category...</option>
+            <option>Earrings</option><option>Neck Chains</option>
+            <option>Bracelets</option><option>Bangles</option>
+            <option>Paintings</option><option>Bags & Pouches</option>
+            <option>Scented Candles</option><option>Fridge Magnets</option>
+            <option>Coasters</option><option>Lippan Art</option>
+            <option>Hair Clips</option><option>Hair Bands</option>
+            <option>Key Chains</option><option>Charms</option>
+            <option>Table Runner</option><option>Table Mats</option>
+            <option>Cushion Cover</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell us about your order</label>
+          <textarea placeholder="Describe what you're looking for — style, colour, size, quantity, customisation..."></textarea>
+        </div>
+        <div class="form-group"><label>Delivery Address</label><input type="text" placeholder="City, State, PIN Code"/></div>
+        <button class="submit-btn" onclick="submitOrder()">Send Order Request 🦋</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <svg width="32" height="26" viewBox="0 0 140 110" xmlns="http://www.w3.org/2000/svg" opacity="0.85">
+          <defs>
+            <radialGradient id="fw1" cx="35%" cy="35%"><stop offset="0%" stop-color="#F9C6D0"/><stop offset="100%" stop-color="#C97B6A" stop-opacity="0.7"/></radialGradient>
+            <radialGradient id="fw2" cx="65%" cy="35%"><stop offset="0%" stop-color="#C5E0F5"/><stop offset="100%" stop-color="#7BA8C4" stop-opacity="0.7"/></radialGradient>
+            <radialGradient id="fw3" cx="35%" cy="65%"><stop offset="0%" stop-color="#D5EDD0"/><stop offset="100%" stop-color="#6FAE6F" stop-opacity="0.7"/></radialGradient>
+            <radialGradient id="fw4" cx="65%" cy="65%"><stop offset="0%" stop-color="#EAD8F5"/><stop offset="100%" stop-color="#9B6FC4" stop-opacity="0.7"/></radialGradient>
+          </defs>
+          <path d="M70,55 C56,38 18,12 2,24 C-8,32 10,62 40,60 C52,59 63,56 70,55Z" fill="url(#fw1)" stroke="#D4A85A" stroke-width="1.3"/>
+          <path d="M70,55 C84,38 122,12 138,24 C148,32 130,62 100,60 C88,59 77,56 70,55Z" fill="url(#fw2)" stroke="#D4A85A" stroke-width="1.3"/>
+          <path d="M70,55 C55,65 24,74 16,90 C10,102 34,108 56,92 C63,87 68,69 70,55Z" fill="url(#fw3)" stroke="#D4A85A" stroke-width="1.3"/>
+          <path d="M70,55 C85,65 116,74 124,90 C130,102 106,108 84,92 C77,87 72,69 70,55Z" fill="url(#fw4)" stroke="#D4A85A" stroke-width="1.3"/>
+          <ellipse cx="70" cy="57" rx="4" ry="18" fill="#C97B6A" stroke="#D4A85A" stroke-width="1"/>
+          <circle cx="70" cy="37" r="4.5" fill="#D4A85A"/>
+        </svg>
+        <span class="footer-brand-name">Suni's Artistry</span>
+      </div>
+      <p class="footer-tagline">Handcrafted with love, made for you.<br/>Each piece is unique — just like you.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Quick Links</p>
+      <ul class="footer-links">
+        <li><a href="#" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" onclick="showPage('shop')">Shop</a></li>
+        <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Categories</p>
+      <ul class="footer-links">
+        <li><a href="#" onclick="openSubcategory('earrings')">Earrings</a></li>
+        <li><a href="#" onclick="openSubcategory('paintings')">Paintings</a></li>
+        <li><a href="#" onclick="openSubcategory('bags')">Bags & Pouches</a></li>
+        <li><a href="#" onclick="openSubcategory('lippan')">Lippan Art</a></li>
+        <li><a href="#" onclick="openSubcategory('candles')">Scented Candles</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Suni's Artistry · All rights reserved</p>
+    <p class="footer-note">Handcrafted with 🦋 · Online payments only</p>
+  </div>
+</footer>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Place Your Order 🦋</h3>
+    <p style="color:var(--subtle);font-size:0.88rem;margin-bottom:20px;">You're ordering:</p>
+    <div class="modal-item"><span style="font-size:1.5rem" id="modalItemIcon">🌸</span><strong id="modalItemName">Item</strong></div>
+    <button class="modal-wa-btn" id="modalWaBtn">💬 Order via WhatsApp</button>
+    <div class="modal-divider">or fill the form</div>
+    <div style="margin-top:14px;">
+      <div class="form-group"><label>Your Name</label><input type="text" placeholder="Your name"/></div>
+      <div class="form-group"><label>Phone</label><input type="tel" placeholder="+91 XXXXX XXXXX"/></div>
+      <div class="form-group"><label>Special request / customisation</label><textarea style="min-height:80px;" placeholder="Any notes..."></textarea></div>
+      <div class="form-note">💳 Payment via UPI/bank transfer after confirmation. No COD.</div>
+      <button class="submit-btn" onclick="submitOrder()">Send Request 🦋</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">🦋 Your order request has been sent! We'll reach out soon.</div>
+
+<script>
+// ══ PRODUCT DATA ══
+const products = [
+  {id:'earrings',name:'Earrings',icon:'🌸',bg:'rgba(247,197,204,0.35)',cat:'jewellery',desc:'Handcrafted earrings in many styles',subs:[
+    {name:'Terracotta Earrings',icon:'🏺',desc:'Classic earthy tones, hand-painted terracotta designs.'},
+    {name:'Bead Earrings',icon:'📿',desc:'Colourful bead combinations, lightweight & vibrant.'},
+    {name:'Jhumkas',icon:'🔔',desc:'Traditional bell-shaped drops in various finishes.'},
+    {name:'Paper Earrings',icon:'🌀',desc:'Quilling paper art transformed into gorgeous earrings.'},
+    {name:'Silk Thread Earrings',icon:'🧵',desc:'Elegant silk thread wrapped in beautiful patterns.'},
+    {name:'Fabric Earrings',icon:'🎀',desc:'Lightweight fabric art for everyday wear.'},
+  ]},
+  {id:'chains',name:'Neck Chains',icon:'💎',bg:'rgba(232,213,240,0.35)',cat:'jewellery',desc:'Delicate handcrafted necklaces',subs:[
+    {name:'Beaded Necklaces',icon:'📿',desc:'Layered bead chains in earthy and pastel tones.'},
+    {name:'Thread Chains',icon:'🧵',desc:'Silk thread necklaces with pendant accents.'},
+    {name:'Terracotta Chains',icon:'🏺',desc:'Clay bead and pendant necklaces, hand-painted.'},
+    {name:'Oxidised Chains',icon:'⚙️',desc:'Dark oxidised finish with traditional motifs.'},
+  ]},
+  {id:'bracelets',name:'Bracelets',icon:'💍',bg:'rgba(184,216,232,0.35)',cat:'jewellery',desc:'Wrist candy made by hand',subs:[
+    {name:'Bead Bracelets',icon:'📿',desc:'Stretch bead bracelets in endless colour combos.'},
+    {name:'Thread Bracelets',icon:'🧵',desc:'Macramé and silk thread wrap bracelets.'},
+    {name:'Charm Bracelets',icon:'✨',desc:'Delicate chains with handmade charms.'},
+  ]},
+  {id:'bangles',name:'Bangles',icon:'🪬',bg:'rgba(200,230,192,0.35)',cat:'jewellery',desc:'Handcrafted bangles with artisan touches',subs:[
+    {name:'Fabric Bangles',icon:'🎀',desc:'Fabric-wrapped bangles in festive and casual styles.'},
+    {name:'Thread Bangles',icon:'🧵',desc:'Silk thread wrapped bangles in vibrant colours.'},
+    {name:'Terracotta Bangles',icon:'🏺',desc:'Earthy hand-painted clay bangles.'},
+  ]},
+  {id:'paintings',name:'Paintings',icon:'🎨',bg:'rgba(184,216,232,0.35)',cat:'art',desc:'Original handpainted artwork',subs:[
+    {name:'Mandala Art',icon:'🔵',desc:'Intricate hand-drawn mandalas on canvas & paper.'},
+    {name:'Fluid Art',icon:'🌊',desc:'Mesmerising pour paintings in dreamy colour flows.'},
+    {name:'Floral Paintings',icon:'🌸',desc:'Delicate botanical illustrations and floral compositions.'},
+    {name:'Abstract Art',icon:'✨',desc:'Expressive abstract pieces, each one unique.'},
+    {name:'Warli Art',icon:'🌿',desc:'Traditional tribal art in contemporary frames.'},
+  ]},
+  {id:'bags',name:'Bags & Pouches',icon:'👜',bg:'rgba(247,197,204,0.3)',cat:'accessories',desc:'Handmade bags for every occasion',subs:[
+    {name:'Cloth Bags',icon:'🛍️',desc:'Sturdy hand-painted or embroidered tote bags.'},
+    {name:'Jute Bags',icon:'🌿',desc:'Eco-friendly jute bags with handmade detailing.'},
+    {name:'Pouches',icon:'👛',desc:'Fabric pouches for storage, gifting & travel.'},
+    {name:'Potli Bags',icon:'🎒',desc:'Traditional drawstring bags perfect for festive gifting.'},
+  ]},
+  {id:'candles',name:'Scented Candles',icon:'🕯️',bg:'rgba(232,213,240,0.35)',cat:'home',desc:'Handpoured aromatic candles',subs:[
+    {name:'Soy Wax Candles',icon:'🌿',desc:'Clean-burning soy wax in calming fragrances.'},
+    {name:'Pillar Candles',icon:'🕯️',desc:'Decorative pillar candles in pastel shades.'},
+    {name:'Jar Candles',icon:'🫙',desc:'Reusable glass jar candles with seasonal scents.'},
+    {name:'Floating Candles',icon:'💧',desc:'Decorative floating candles for special occasions.'},
+  ]},
+  {id:'magnets',name:'Fridge Magnets',icon:'🧲',bg:'rgba(200,230,192,0.35)',cat:'home',desc:'Quirky handmade fridge magnets',subs:[
+    {name:'Clay Magnets',icon:'🏺',desc:'Hand-sculpted clay characters and motifs.'},
+    {name:'Resin Magnets',icon:'✨',desc:'Colourful resin art embedded in magnets.'},
+    {name:'Fabric Magnets',icon:'🎀',desc:'Miniature fabric art as fridge décor.'},
+  ]},
+  {id:'coasters',name:'Coasters',icon:'☕',bg:'rgba(247,197,204,0.3)',cat:'home',desc:'Handcrafted coasters for your table',subs:[
+    {name:'Resin Coasters',icon:'✨',desc:'Stunning resin pour coasters with dried flowers.'},
+    {name:'Mandala Coasters',icon:'🔵',desc:'Hand-painted mandala designs on wood.'},
+    {name:'Fabric Coasters',icon:'🎀',desc:'Quilted fabric coasters in matching sets.'},
+  ]},
+  {id:'lippan',name:'Lippan Art',icon:'🏺',bg:'rgba(184,216,232,0.3)',cat:'art',desc:'Traditional Kutchi mud mirror wall art',subs:[
+    {name:'Wall Hangings',icon:'🪞',desc:'Traditional lippan wall panels with mirror mosaic.'},
+    {name:'Frames',icon:'🖼️',desc:'Decorative lippan picture and mirror frames.'},
+    {name:'Lamp Shades',icon:'💡',desc:'Lippan art on lamp covers for ambient glow.'},
+  ]},
+  {id:'hairclips',name:'Hair Clips',icon:'🎀',bg:'rgba(232,213,240,0.3)',cat:'accessories',desc:'Handmade hair accessories',subs:[
+    {name:'Fabric Clips',icon:'🎀',desc:'Bow and floral clips in soft fabric.'},
+    {name:'Resin Clips',icon:'✨',desc:'Colourful resin art on alligator clips.'},
+    {name:'Terracotta Clips',icon:'🏺',desc:'Lightweight clay hairclips with painted motifs.'},
+  ]},
+  {id:'hairbands',name:'Hair Bands',icon:'🌀',bg:'rgba(200,230,192,0.3)',cat:'accessories',desc:'Stylish handmade headbands',subs:[
+    {name:'Fabric Headbands',icon:'🎀',desc:'Knotted and wrapped fabric headbands.'},
+    {name:'Scrunchies',icon:'🌸',desc:'Handmade scrunchies in silk, cotton and velvet.'},
+    {name:'Embellished Bands',icon:'✨',desc:'Beads and charm-embellished hair bands.'},
+  ]},
+  {id:'keychains',name:'Key Chains',icon:'🗝️',bg:'rgba(247,197,204,0.25)',cat:'accessories',desc:'Cute handcrafted keychains',subs:[
+    {name:'Resin Keychains',icon:'✨',desc:'Colourful resin art keychains in fun shapes.'},
+    {name:'Clay Keychains',icon:'🏺',desc:'Hand-sculpted polymer clay keychains.'},
+    {name:'Macramé Keychains',icon:'🧵',desc:'Boho knotted keychains with beads and tassels.'},
+    {name:'Name Keychains',icon:'📝',desc:'Personalised name keychains made to order.'},
+  ]},
+  {id:'charms',name:'Charms',icon:'✨',bg:'rgba(184,216,232,0.25)',cat:'accessories',desc:'Handmade decorative charms',subs:[
+    {name:'Bag Charms',icon:'👜',desc:'Decorative charms to hang on bags and pouches.'},
+    {name:'Phone Charms',icon:'📱',desc:'Cute charms for phone cases.'},
+    {name:'Clay Charms',icon:'🏺',desc:'Miniature hand-sculpted clay charms.'},
+  ]},
+  {id:'runner',name:'Table Runner',icon:'🛋️',bg:'rgba(200,230,192,0.25)',cat:'home',desc:'Handcrafted table runners',subs:[
+    {name:'Block Printed Runners',icon:'🎨',desc:'Hand block-printed cotton table runners.'},
+    {name:'Embroidered Runners',icon:'🧵',desc:'Delicate embroidery on linen and cotton.'},
+    {name:'Macramé Runners',icon:'🤍',desc:'Boho knotted macramé table runners.'},
+  ]},
+  {id:'mats',name:'Table Mats',icon:'🍽️',bg:'rgba(232,213,240,0.25)',cat:'home',desc:'Handcrafted place mats',subs:[
+    {name:'Jute Mats',icon:'🌿',desc:'Natural jute woven place mats with colour edges.'},
+    {name:'Fabric Mats',icon:'🎀',desc:'Reversible fabric mats in seasonal patterns.'},
+    {name:'Crocheted Mats',icon:'🧶',desc:'Hand-crocheted cotton mats in pastel shades.'},
+  ]},
+  {id:'cushions',name:'Cushion Covers',icon:'💛',bg:'rgba(247,197,204,0.2)',cat:'home',desc:'Handmade cushion covers',subs:[
+    {name:'Block Printed Covers',icon:'🎨',desc:'Hand block-printed cotton cushion covers.'},
+    {name:'Embroidered Covers',icon:'🧵',desc:'Floral and geometric hand embroidery.'},
+    {name:'Patchwork Covers',icon:'🧩',desc:'Colourful fabric patchwork cushion covers.'},
+    {name:'Macramé Covers',icon:'🤍',desc:'Boho macramé texture cushion covers.'},
+  ]},
+];
+
+// ══ RENDER SHOP ══
+function renderShop(filter='all'){
+  const grid = document.getElementById('shopGrid');
+  const list = filter==='all' ? products : products.filter(p=>p.cat===filter);
+  grid.innerHTML = list.map(p=>`
+    <div class="shop-card" onclick="openSubcategory('${p.id}')">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,${p.bg},rgba(255,255,255,0.3));">${p.icon}</div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">${p.name}</div>
+        <div class="shop-card-count">${p.subs.length} varieties</div>
+        <div class="shop-card-cta">View All →</div>
+      </div>
+    </div>`).join('');
+}
+function filterShop(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderShop(cat);
+}
+
+// ══ SUBCATEGORY ══
+function openSubcategory(id){
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  document.getElementById('subBreadcrumb').textContent = p.name;
+  document.getElementById('subIcon').textContent = p.icon;
+  document.getElementById('subTitle').textContent = p.name;
+  document.getElementById('subEyebrow').textContent = p.cat.charAt(0).toUpperCase()+p.cat.slice(1);
+  document.getElementById('subDesc').textContent = p.desc;
+  document.getElementById('subGrid').innerHTML = p.subs.map(s=>`
+    <div class="sub-card">
+      <div class="sub-card-img" style="background:linear-gradient(135deg,${p.bg},rgba(255,255,255,0.4));">${s.icon}</div>
+      <div class="sub-card-body">
+        <div class="sub-card-name">${s.name}</div>
+        <div class="sub-card-desc">${s.desc}</div>
+        <div class="sub-card-price">Made to order</div>
+        <div class="sub-card-actions">
+          <button class="btn-order" onclick="openOrderModal('${s.icon}','${s.name}')">Order Now</button>
+          <button class="btn-wa" onclick="orderViaWA('${s.name}')">💬</button>
+        </div>
+      </div>
+    </div>`).join('');
+  showPage('subcategory');
+}
+
+// ══ PAGE ROUTING ══
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('active', a.dataset.page===id);
+  });
+  window.scrollTo(0,0);
+  if(id==='shop') renderShop();
+}
+
+// ══ MODAL ══
+function openOrderModal(icon,name){
+  document.getElementById('modalItemIcon').textContent=icon;
+  document.getElementById('modalItemName').textContent=name;
+  document.getElementById('modalWaBtn').onclick=()=>orderViaWA(name);
+  document.getElementById('orderModal').classList.add('open');
+}
+function closeModal(){document.getElementById('orderModal').classList.remove('open');}
+document.getElementById('orderModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+function orderViaWA(name){
+  const msg=encodeURIComponent(`Hi Suni! I'm interested in ordering: ${name}. Could you share more details?`);
+  window.open(`https://wa.me/91XXXXXXXXXX?text=${msg}`,'_blank');
+}
+function submitOrder(){
+  closeModal();
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),4000);
+}
+
+// ══ BUTTERFLY BACKGROUND ══
+const canvas = document.getElementById('butterfly-canvas');
+const bfColors = [
+  ['#FADADD','#E8A0AA'],['#D0EDFB','#90C4E0'],
+  ['#D8F0D0','#8ACA86'],['#EEE0FF','#C0A0E0'],
+  ['#FFF0D0','#F0CC7A'],['#FADADD','#C8E6C0']
+];
+
+function makeBF(size, left, delay, duration, colors){
+  const bf = document.createElement('div');
+  bf.className = 'bf';
+  bf.style.cssText = `left:${left}%;width:${size}px;height:${size*0.85}px;animation-duration:${duration}s;animation-delay:${delay}s;`;
+  const [c1,c2] = colors;
+  bf.innerHTML = `<div class="bf-inner" style="animation-duration:${0.6+Math.random()*0.4}s;">
+    <svg width="${size}" height="${size*0.85}" viewBox="0 0 100 85" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50,42 C38,28 12,10 2,18 C-4,24 8,44 28,42 C36,41 44,41 50,42Z" fill="${c1}" opacity="0.8"/>
+      <path d="M50,42 C62,28 88,10 98,18 C104,24 92,44 72,42 C64,41 56,41 50,42Z" fill="${c2}" opacity="0.8"/>
+      <path d="M50,42 C40,50 18,58 12,72 C8,80 24,84 40,72 C46,67 49,53 50,42Z" fill="${c2}" opacity="0.7"/>
+      <path d="M50,42 C60,50 82,58 88,72 C92,80 76,84 60,72 C54,67 51,53 50,42Z" fill="${c1}" opacity="0.7"/>
+      <ellipse cx="50" cy="43" rx="3" ry="14" fill="#D4A85A" opacity="0.7"/>
+      <circle cx="50" cy="30" r="3.5" fill="#D4A85A" opacity="0.7"/>
+      <path d="M50,30 C44,22 40,16 38,12" stroke="#D4A85A" stroke-width="1" fill="none" opacity="0.7" stroke-linecap="round"/>
+      <path d="M50,30 C56,22 60,16 62,12" stroke="#D4A85A" stroke-width="1" fill="none" opacity="0.7" stroke-linecap="round"/>
+    </svg>
+  </div>`;
+  canvas.appendChild(bf);
+}
+
+// Spawn butterflies of different sizes
+const bfConfig = [
+  {size:18,count:5},{size:28,count:4},{size:40,count:3},{size:60,count:2},{size:80,count:1}
+];
+bfConfig.forEach(({size,count})=>{
+  for(let i=0;i<count;i++){
+    const left = 5 + Math.random()*90;
+    const delay = -Math.random()*20;
+    const duration = 18 + Math.random()*14;
+    const colors = bfColors[Math.floor(Math.random()*bfColors.length)];
+    makeBF(size,left,delay,duration,colors);
+  }
+});
+
+// Init
+renderShop();
+</script>
+</body>
+</html>
